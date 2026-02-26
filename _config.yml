@@ -1,14 +1,14 @@
 title: Bendeguz Borbely-I.
 position: Student
-affiliation: TBD
+#affiliation: TBD
 email: borbely06@proton.me
 keywords: minimal academic
 #linkedin: https://www.linkedin.com/
+github_link: https://github.com/bendeguz06
 cv_link: ./
 avatar: ./assets/img/avatar.png
 google_analytics: UA-111540567-4
 favicon: ./assets/img/favicon.png
 favicon_dark: ./assets/img/favicon-dark.png
-description: The Strata Academic is a simple and elegant jekyll theme for academic personal homepage.
-canonical: https://strata-academic.yyliu.net/
+canonical: https://bendeguz06.github.io/
 remote_theme: yaoyao-liu/strata-academic

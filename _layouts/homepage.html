@@ -1,105 +1,133 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
   Strata by HTML5 UP
   html5up.net | @ajlkn
   Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-  <head>
-    <title>{{ site.title }} | {{site.affiliation}}</title>
+    <head>
+        <title>{{ site.title }} | {{site.affiliation}}</title>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.description }}">
-    {% if site.keywords %}
-    <meta name="keywords" content="{{ site.keywords }}">
-    {% endif %}
-    {% if site.canonical %}
-    <link rel="canonical" href="{{ site.canonical }}"/>
-    {% endif %}
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="{{ site.description }}" />
+        {% if site.keywords %}
+        <meta name="keywords" content="{{ site.keywords }}" />
+        {% endif %} {% if site.canonical %}
+        <link rel="canonical" href="{{ site.canonical }}" />
+        {% endif %} {% if site.favicon_dark %}
+        <link
+            rel="icon"
+            media="(prefers-color-scheme:dark)"
+            href="{{ site.favicon_dark }}"
+            type="image/png"
+        />
+        {% endif %} {% if site.favicon %}
+        <link
+            rel="icon"
+            media="(prefers-color-scheme:light)"
+            href="{{ site.favicon }}"
+            type="image/png"
+        />
+        {% endif %}
+        <script
+            src="./assets/js/favicon-switcher.js"
+            type="application/javascript"
+        ></script>
 
-    {% if site.favicon_dark %}
-    <link rel="icon" media="(prefers-color-scheme:dark)" href="{{ site.favicon_dark }}" type="image/png" />
-    {% endif %}
-    {% if site.favicon %}
-    <link rel="icon" media="(prefers-color-scheme:light)" href="{{ site.favicon }}" type="image/png" />
-    {% endif %}
-    <script src="./assets/js/favicon-switcher.js" type="application/javascript"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body class="is-preload">
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                {% if site.avatar %}
+                <a class="image avatar"
+                    ><img
+                        src="{{site.avatar}}"
+                        alt="avatar"
+                        onContextMenu="return false"
+                /></a>
+                {% endif %}
+                <h1 class="header-title">
+                    <strong
+                        ><header-title>{{ site.title }}</header-title></strong
+                    ><br />
+                </h1>
+                <header-info>
+                    {% if site.position %} {{ site.position }}<br />
+                    {% endif %} {% if site.affiliation %} {{ site.affiliation }}
+                    <br />
+                    {% endif %} {% if site.email %} {{ site.email }}
+                    <br />
+                    {% endif %}
+                </header-info>
+            </div>
+        </header>
 
-
-  </head>
-  <body class="is-preload">
-
-    <!-- Header -->
-      <header id="header">
-        <div class="inner">
-          {% if site.avatar %}
-          <a class="image avatar"><img src="{{site.avatar}}" alt="avatar" onContextMenu="return false" /></a>
-          {% endif %}
-          <h1 class="header-title"><strong><header-title>{{ site.title }}</header-title></strong><br></h1>
-          <header-info>
-          {% if site.position %}
-          {{ site.position }}<br>
-          {% endif %}
-          {% if site.affiliation %}
-          {{ site.affiliation }}
-          <br>
-          {% endif %}
-          {% if site.email %}
-          {{ site.email }}
-          <br>
-          {% endif %}
-          </header-info>
+        <!-- Main -->
+        <div id="main">
+            <section id="main_content">{{ content }}</section>
         </div>
-      </header>
 
-    <!-- Main -->
-      <div id="main">
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    {% if site.linkedin %}
+                    <li>
+                        <a
+                            href="{{ site.linkedin }}"
+                            class="icon brands fa-linkedin-in"
+                        ></a>
+                    </li>
+                    {% endif %} {% if site.github_link %}
+                    <li>
+                        <a
+                            href="{{ site.github_link }}"
+                            class="icon brands fa-github"
+                        ></a>
+                    </li>
+                    {% endif %} {% if site.google_scholar %}
+                    <li>
+                        <a
+                            href="{{ site.google_scholar }}"
+                            class="ai ai-google-scholar ai-2x"
+                            style="border: none; vertical-align: -4px"
+                        ></a>
+                    </li>
+                    {% endif %} {% if site.cv_link %}
+                    <li>
+                        <a
+                            href="{{ site.cv_link }}"
+                            class="ai ai-cv ai-2x"
+                            style="border: none; vertical-align: -4px"
+                        ></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </footer>
 
-      <section id="main_content">
-
-      {{ content }}
-
-      <theme-info>Powered by Jekyll and <a href="https://github.com/yaoyao-liu/strata-academic" target="_blank" rel="noopener">Strata Academic</a> theme.</theme-info>
-
-      </section>
-
-      </div>
-
-    <!-- Footer -->
-      <footer id="footer">
-        <div class="inner">
-          <ul class="icons">
-            {% if site.linkedin %}
-            <li><a href="{{ site.linkedin }}" class="icon brands fa-linkedin-in"></a></li>
-            {% endif %}
-            {% if site.github_link %}
-            <li><a href="{{ site.github_link }}" class="icon brands fa-github"></a></li>
-            {% endif %}
-            {% if site.google_scholar %}
-            <li><a href="{{ site.google_scholar }}" class="ai ai-google-scholar ai-2x" style="border:none;vertical-align: -4px"></a></li>
-            {% endif %}
-            {% if site.cv_link %}
-            <li><a href="{{ site.cv_link }}" class="ai ai-cv ai-2x" style="border:none;vertical-align: -4px"></a></li>
-            {% endif %}
-          </ul>
-
-        </div>
-      </footer>
-
-    <!-- Scripts -->
-      <script src="./assets/original/js/jquery.min.js"></script>
-      <script src="./assets/original/js/jquery.poptrox.min.js"></script>
-      <script src="./assets/original/js/browser.min.js"></script>
-      <script src="./assets/original/js/breakpoints.min.js"></script>
-      <script src="./assets/original/js/util.js"></script>
-      <script src="./assets/original/js/main.js"></script>
-
-  </body>
+        <!-- Scripts -->
+        <script src="./assets/original/js/jquery.min.js"></script>
+        <script src="./assets/original/js/jquery.poptrox.min.js"></script>
+        <script src="./assets/original/js/browser.min.js"></script>
+        <script src="./assets/original/js/breakpoints.min.js"></script>
+        <script src="./assets/original/js/util.js"></script>
+        <script src="./assets/original/js/main.js"></script>
+    </body>
 </html>
