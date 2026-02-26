@@ -12,7 +12,7 @@ layout: homepage
 - **Py3Molecule:** *Interactive 3D visualization of molecules* <a href="https://www.youtube.com/watch?v=tOCXapYg7sU" target="_blank">Showcase</a> & <a href="https://github.com/bendeguz06/Py3Molecule" target="_blank">GitHub</a> (2025)
 
 ## Competitions
-- **Athletica Galactica Finalist:** Hungarian IOAA Qualifying Competition, <a href="assets/athletica_galactica_certificate.png" target="_blank">Certificate</a> (2024/25, did not attend)
+- **Athletica Galactica Finalist:** Hungarian IOAA Qualifying Competition, <a href="assets/athletica_galactica_certificate.png" target="_blank">Certificate</a> (2024/25, did not attend finals)
 - **PRAMUN XVII:** Represented Republic of Korea \| Disarmament 2  (2025)
 - **CanSat - ESERO Austria:** Can-sized satellite building competition <a href="https://www.youtube.com/watch?v=yM3BTNvkPlo&t" target="_blank">Aftermovie</a> (2024/25)
 
