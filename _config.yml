@@ -3,9 +3,9 @@ position: Student
 #affiliation: TBD
 email: borbely06@proton.me
 keywords: minimal academic
-#linkedin: https://www.linkedin.com/
-github_link: https://github.com/bendeguz06
 cv_link: ./
+github_link: https://github.com/bendeguz06
+linkedin: https://www.linkedin.com/in/bendeguz-borbely-i-4996bb3b3
 avatar: ./assets/img/avatar.png
 google_analytics: UA-111540567-4
 favicon: ./assets/img/favicon.png

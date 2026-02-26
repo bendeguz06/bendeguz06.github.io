@@ -87,7 +87,15 @@
         <footer id="footer">
             <div class="inner">
                 <ul class="icons">
-                    {% if site.linkedin %}
+                    {% if site.cv_link %}
+                    <li>
+                        <a
+                            href="{{ site.cv_link }}"
+                            class="ai ai-cv ai-2x"
+                            style="border: none; vertical-align: -4px"
+                        ></a>
+                    </li>
+                    {% endif %} {% if site.linkedin %}
                     <li>
                         <a
                             href="{{ site.linkedin }}"
@@ -106,14 +114,6 @@
                         <a
                             href="{{ site.google_scholar }}"
                             class="ai ai-google-scholar ai-2x"
-                            style="border: none; vertical-align: -4px"
-                        ></a>
-                    </li>
-                    {% endif %} {% if site.cv_link %}
-                    <li>
-                        <a
-                            href="{{ site.cv_link }}"
-                            class="ai ai-cv ai-2x"
                             style="border: none; vertical-align: -4px"
                         ></a>
                     </li>
