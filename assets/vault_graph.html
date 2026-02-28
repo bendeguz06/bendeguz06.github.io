@@ -1,37 +1,249 @@
-
-    <!DOCTYPE html>
-    <html>
+<!doctype html>
+<html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <style>
-            body { margin: 0; padding: 0; overflow: hidden; background-color: #1e1e1e; }
-            .node { cursor: move; }
-            .link { stroke: #999; stroke-opacity: 0.6; }
-            text { font-family: Arial, sans-serif; font-size: 12px; pointer-events: none; fill: #fff; }
-            svg { width: 100vw; height: 100vh; }
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #1e1e1e;
+            }
+            .node {
+                cursor: move;
+            }
+            .link {
+                stroke: #999;
+                stroke-opacity: 0.6;
+            }
+            text {
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+                pointer-events: none;
+                fill: #fff;
+            }
+            svg {
+                width: 100vw;
+                height: 100vh;
+            }
         </style>
     </head>
     <body>
         <div id="graph"></div>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script>
-            var nodes = [{"id": "ai.md", "label": "Ai", "link_count": 1, "color": "#7f7f7f"}, {"id": "astronomy.md", "label": "Astronomy", "link_count": 1, "color": "#7f7f7f"}, {"id": "astrophyiscs.md", "label": "Astrophyiscs", "link_count": 1, "color": "#7f7f7f"}, {"id": "biology.md", "label": "Biology", "link_count": 1, "color": "#7f7f7f"}, {"id": "calculus.md", "label": "Calculus", "link_count": 2, "color": "#7f7f7f"}, {"id": "chemistry.md", "label": "Chemistry", "link_count": 1, "color": "#7f7f7f"}, {"id": "cross product.md", "label": "Cross product", "link_count": 3, "color": "#7f7f7f"}, {"id": "derivative rules.md", "label": "Derivative rules", "link_count": 1, "color": "#7f7f7f"}, {"id": "linear algebra.md", "label": "Linear algebra", "link_count": 2, "color": "#7f7f7f"}, {"id": "mathematics.md", "label": "Mathematics", "link_count": 3, "color": "#7f7f7f"}, {"id": "nuclear physics.md", "label": "Nuclear physics", "link_count": 3, "color": "#7f7f7f"}, {"id": "particle physics.md", "label": "Particle physics", "link_count": 1, "color": "#7f7f7f"}, {"id": "physics.md", "label": "Physics", "link_count": 6, "color": "#7f7f7f"}, {"id": "quantum mechanics.md", "label": "Quantum mechanics", "link_count": 1, "color": "#7f7f7f"}, {"id": "quantum physics.md", "label": "Quantum physics", "link_count": 2, "color": "#7f7f7f"}, {"id": "radioactive decay.md", "label": "Radioactive decay", "link_count": 7, "color": "#7f7f7f"}, {"id": "segr\u00e8 chart.md", "label": "Segr\u00e8 chart", "link_count": 5, "color": "#7f7f7f"}, {"id": "genesis.md", "label": "Genesis", "link_count": 6, "color": "#7f7f7f"}, {"id": "todo.md", "label": "Todo", "link_count": 0, "color": "#7f7f7f"}, {"id": "sociology.md", "label": "Sociology", "link_count": 2, "color": "#7f7f7f"}, {"id": "matthew effect.md", "label": "Matthew effect", "link_count": 1, "color": "#7f7f7f"}, {"id": "alpha decay.md", "label": "Alpha decay", "link_count": 2, "color": "#7f7f7f"}, {"id": "gamma decay.md", "label": "Gamma decay", "link_count": 2, "color": "#7f7f7f"}, {"id": "beta minus decay.md", "label": "Beta minus decay", "link_count": 1, "color": "#7f7f7f"}, {"id": "beta plus decay.md", "label": "Beta plus decay", "link_count": 1, "color": "#7f7f7f"}, {"id": "beta decay.md", "label": "Beta decay", "link_count": 4, "color": "#7f7f7f"}, {"id": "note template.md", "label": "Note template", "link_count": 1, "color": "#7f7f7f"}];
-            var links = [{"source": "ai.md", "target": "genesis.md"}, {"source": "astronomy.md", "target": "physics.md"}, {"source": "astrophyiscs.md", "target": "physics.md"}, {"source": "biology.md", "target": "genesis.md"}, {"source": "calculus.md", "target": "mathematics.md"}, {"source": "chemistry.md", "target": "genesis.md"}, {"source": "cross product.md", "target": "linear algebra.md"}, {"source": "derivative rules.md", "target": "calculus.md"}, {"source": "linear algebra.md", "target": "mathematics.md"}, {"source": "mathematics.md", "target": "genesis.md"}, {"source": "nuclear physics.md", "target": "physics.md"}, {"source": "particle physics.md", "target": "physics.md"}, {"source": "physics.md", "target": "genesis.md"}, {"source": "quantum mechanics.md", "target": "quantum physics.md"}, {"source": "quantum physics.md", "target": "physics.md"}, {"source": "radioactive decay.md", "target": "alpha decay.md"}, {"source": "radioactive decay.md", "target": "beta decay.md"}, {"source": "radioactive decay.md", "target": "gamma decay.md"}, {"source": "radioactive decay.md", "target": "nuclear physics.md"}, {"source": "segr\u00e8 chart.md", "target": "nuclear physics.md"}, {"source": "sociology.md", "target": "genesis.md"}, {"source": "matthew effect.md", "target": "sociology.md"}, {"source": "alpha decay.md", "target": "radioactive decay.md"}, {"source": "gamma decay.md", "target": "radioactive decay.md"}, {"source": "beta minus decay.md", "target": "beta decay.md"}, {"source": "beta plus decay.md", "target": "beta decay.md"}, {"source": "beta decay.md", "target": "radioactive decay.md"}];
-            var colorGroups = [{"query": "tag:#physics/nuclear  ", "color": "#39a300"}, {"query": "tag:#physics/quantummechanics  ", "color": "#ff0000"}, {"query": "tag:#mathematics  ", "color": "#004cff"}];
+            var nodes = [
+                { id: "ai.md", label: "Ai", link_count: 1, color: "#7f7f7f" },
+                {
+                    id: "astronomy.md",
+                    label: "Astronomy",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "astrophyiscs.md",
+                    label: "Astrophyiscs",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "biology.md",
+                    label: "Biology",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "calculus.md",
+                    label: "Calculus",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "chemistry.md",
+                    label: "Chemistry",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "cross product.md",
+                    label: "Cross product",
+                    link_count: 3,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "derivative rules.md",
+                    label: "Derivative rules",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "linear algebra.md",
+                    label: "Linear algebra",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "mathematics.md",
+                    label: "Mathematics",
+                    link_count: 3,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "nuclear physics.md",
+                    label: "Nuclear physics",
+                    link_count: 3,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "particle physics.md",
+                    label: "Particle physics",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "physics.md",
+                    label: "Physics",
+                    link_count: 6,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "quantum mechanics.md",
+                    label: "Quantum mechanics",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "quantum physics.md",
+                    label: "Quantum physics",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "radioactive decay.md",
+                    label: "Radioactive decay",
+                    link_count: 7,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "segr\u00e8 chart.md",
+                    label: "Segr\u00e8 chart",
+                    link_count: 5,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "genesis.md",
+                    label: "Genesis",
+                    link_count: 6,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "todo.md",
+                    label: "Todo",
+                    link_count: 0,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "sociology.md",
+                    label: "Sociology",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "matthew effect.md",
+                    label: "Matthew effect",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "alpha decay.md",
+                    label: "Alpha decay",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "gamma decay.md",
+                    label: "Gamma decay",
+                    link_count: 2,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "beta minus decay.md",
+                    label: "Beta minus decay",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "beta plus decay.md",
+                    label: "Beta plus decay",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "beta decay.md",
+                    label: "Beta decay",
+                    link_count: 4,
+                    color: "#7f7f7f",
+                },
+                {
+                    id: "note template.md",
+                    label: "Note template",
+                    link_count: 1,
+                    color: "#7f7f7f",
+                },
+            ];
+            var links = [
+                { source: "ai.md", target: "genesis.md" },
+                { source: "astronomy.md", target: "physics.md" },
+                { source: "astrophyiscs.md", target: "physics.md" },
+                { source: "biology.md", target: "genesis.md" },
+                { source: "calculus.md", target: "mathematics.md" },
+                { source: "chemistry.md", target: "genesis.md" },
+                { source: "cross product.md", target: "linear algebra.md" },
+                { source: "derivative rules.md", target: "calculus.md" },
+                { source: "linear algebra.md", target: "mathematics.md" },
+                { source: "mathematics.md", target: "genesis.md" },
+                { source: "nuclear physics.md", target: "physics.md" },
+                { source: "particle physics.md", target: "physics.md" },
+                { source: "physics.md", target: "genesis.md" },
+                {
+                    source: "quantum mechanics.md",
+                    target: "quantum physics.md",
+                },
+                { source: "quantum physics.md", target: "physics.md" },
+                { source: "radioactive decay.md", target: "alpha decay.md" },
+                { source: "radioactive decay.md", target: "beta decay.md" },
+                { source: "radioactive decay.md", target: "gamma decay.md" },
+                {
+                    source: "radioactive decay.md",
+                    target: "nuclear physics.md",
+                },
+                { source: "segr\u00e8 chart.md", target: "nuclear physics.md" },
+                { source: "sociology.md", target: "genesis.md" },
+                { source: "matthew effect.md", target: "sociology.md" },
+                { source: "alpha decay.md", target: "radioactive decay.md" },
+                { source: "gamma decay.md", target: "radioactive decay.md" },
+                { source: "beta minus decay.md", target: "beta decay.md" },
+                { source: "beta plus decay.md", target: "beta decay.md" },
+                { source: "beta decay.md", target: "radioactive decay.md" },
+            ];
+            var colorGroups = [
+                { query: "tag:#physics/nuclear  ", color: "#39a300" },
+                { query: "tag:#physics/quantummechanics  ", color: "#ff0000" },
+                { query: "tag:#mathematics  ", color: "#004cff" },
+            ];
 
             var width = window.innerWidth;
             var height = window.innerHeight;
 
-            var svg = d3.select("#graph")
+            var svg = d3
+                .select("#graph")
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height);
 
             var g = svg.append("g");
 
-            var zoom = d3.zoom()
-                .scaleExtent([0.1, 4])
-                .on("zoom", zoomed);
+            var zoom = d3.zoom().scaleExtent([0.1, 40]).on("zoom", zoomed);
 
             svg.call(zoom);
 
@@ -51,12 +263,30 @@
                 }
             }
 
-            var simulation = d3.forceSimulation(nodes)
-                .force("link", d3.forceLink(links).id(d => d.id).distance(d => {
-                    const sourceLinks = links.filter(link => link.source.id === d.source.id || link.target.id === d.source.id).length;
-                    const targetLinks = links.filter(link => link.source.id === d.target.id || link.target.id === d.target.id).length;
-                    return Math.min(150, Math.max(50, (sourceLinks + targetLinks) * 10));
-                }))
+            var simulation = d3
+                .forceSimulation(nodes)
+                .force(
+                    "link",
+                    d3
+                        .forceLink(links)
+                        .id((d) => d.id)
+                        .distance((d) => {
+                            const sourceLinks = links.filter(
+                                (link) =>
+                                    link.source.id === d.source.id ||
+                                    link.target.id === d.source.id,
+                            ).length;
+                            const targetLinks = links.filter(
+                                (link) =>
+                                    link.source.id === d.target.id ||
+                                    link.target.id === d.target.id,
+                            ).length;
+                            return Math.min(
+                                150,
+                                Math.max(50, (sourceLinks + targetLinks) * 10),
+                            );
+                        }),
+                )
                 .force("charge", d3.forceManyBody().strength(-300))
                 .force("center", d3.forceCenter(width / 2, height / 2))
                 .force("custom", customForce)
@@ -65,54 +295,58 @@
                 .alphaMin(0.001)
                 .on("tick", ticked);
 
-            var link = g.append("g")
+            var link = g
+                .append("g")
                 .attr("class", "links")
                 .selectAll("line")
                 .data(links)
-                .enter().append("line")
+                .enter()
+                .append("line")
                 .attr("class", "link");
 
-            var node = g.append("g")
+            var node = g
+                .append("g")
                 .attr("class", "nodes")
                 .selectAll("circle")
                 .data(nodes)
-                .enter().append("circle")
+                .enter()
+                .append("circle")
                 .attr("class", "node")
-                .attr("r", function(d) {
+                .attr("r", function (d) {
                     var radius = 5 + Math.sqrt(d.link_count);
                     return radius;
                 })
-                .attr("fill", function(d) {
+                .attr("fill", function (d) {
                     return d.color;
                 })
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+                .call(
+                    d3
+                        .drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended),
+                );
 
-            var text = g.append("g")
+            var text = g
+                .append("g")
                 .attr("class", "texts")
                 .selectAll("text")
                 .data(nodes)
-                .enter().append("text")
+                .enter()
+                .append("text")
                 .attr("x", 8)
                 .attr("y", ".31em")
-                .text(d => d.label);
+                .text((d) => d.label);
 
             function ticked() {
-                link
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
+                link.attr("x1", (d) => d.source.x)
+                    .attr("y1", (d) => d.source.y)
+                    .attr("x2", (d) => d.target.x)
+                    .attr("y2", (d) => d.target.y);
 
-                node
-                    .attr("cx", d => d.x)
-                    .attr("cy", d => d.y);
+                node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
 
-                text
-                    .attr("x", d => d.x + 8)
-                    .attr("y", d => d.y + 3);
+                text.attr("x", (d) => d.x + 8).attr("y", (d) => d.y + 3);
             }
 
             function dragstarted(d) {
@@ -134,7 +368,7 @@
 
             function labelCollision() {
                 var alpha = 0.5;
-                return function() {
+                return function () {
                     for (var i = 0; i < nodes.length; i++) {
                         for (var j = i + 1; j < nodes.length; j++) {
                             var nodeA = nodes[i];
@@ -147,7 +381,9 @@
                             var minDistance = 20;
 
                             if (distance < minDistance) {
-                                var moveFactor = (minDistance - distance) / distance * alpha;
+                                var moveFactor =
+                                    ((minDistance - distance) / distance) *
+                                    alpha;
                                 var mx = dx * moveFactor;
                                 var my = dy * moveFactor;
                                 nodeA.x += mx;
@@ -159,8 +395,6 @@
                     }
                 };
             }
-
         </script>
     </body>
-    </html>
-    
+</html>
