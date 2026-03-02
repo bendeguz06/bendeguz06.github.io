@@ -8,6 +8,7 @@ layout: homepage
 
 ## Projects
 
+- **Petal:** *AI-powered enterprise-level collaboration platform*, <a href="https://github.com/bendeguz06/petal", target="_blank">GitHub</a> (2026-)
 - **VWA thesis:** <a href="assets/VWA_final.pdf" target="_blank">*Die Eisriesen: Ein Blick auf Uranus und Neptun*</a>  & <a href="assets/ppt_vwa_final.pdf" target="_blank">Defense PDF</a> (2024-26)
 - **Py3Molecule:** *Interactive 3D visualization of molecules* <a href="https://www.youtube.com/watch?v=tOCXapYg7sU" target="_blank">Showcase</a> & <a href="https://github.com/bendeguz06/Py3Molecule" target="_blank">GitHub</a> (2025)
 
