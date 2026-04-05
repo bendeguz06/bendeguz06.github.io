@@ -49,16 +49,100 @@
         />
 
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <style>
+            .avatar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.9em;
+            }
+
+            .avatar-toggle-track {
+                position: relative;
+                display: inline-flex;
+                background: rgba(255, 255, 255, 0.07);
+                border: 1px solid rgba(255, 255, 255, 0.13);
+                border-radius: 999px;
+                padding: 3px;
+                gap: 0;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .avatar-toggle-pill {
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                height: calc(100% - 6px);
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.18);
+                transition:
+                    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                    width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+                pointer-events: none;
+            }
+
+            .avatar-toggle-btn {
+                position: relative;
+                z-index: 1;
+                padding: 4px 13px;
+                font-family: "Courier New", Courier, monospace;
+                font-size: 0.65em;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.45);
+                border: none;
+                background: transparent;
+                border-radius: 999px;
+                cursor: pointer;
+                transition: color 0.22s ease;
+                white-space: nowrap;
+            }
+
+            .avatar-toggle-btn.active {
+                color: rgba(255, 255, 255, 0.92);
+            }
+
+            #header .image.avatar img {
+                transition: opacity 0.35s ease;
+            }
+
+            #header .image.avatar img.fade-out {
+                opacity: 0;
+            }
+        </style>
     </head>
     <body class="is-preload">
         <!-- Header -->
         <header id="header">
             <div class="inner">
                 {% if site.avatar %}
+                <div class="avatar-toggle">
+                    <div class="avatar-toggle-track" id="avatarToggle">
+                        <div class="avatar-toggle-pill" id="avatarPill"></div>
+                        <button
+                            class="avatar-toggle-btn active"
+                            id="btnOld"
+                            data-src="./assets/img/avatar.png"
+                            data-pos="center"
+                        >
+                            old
+                        </button>
+                        <button
+                            class="avatar-toggle-btn"
+                            id="btnCurrent"
+                            data-src="./assets/img/avatar_current.jpg"
+                            data-pos="center"
+                        >
+                            current
+                        </button>
+                    </div>
+                </div>
                 <a class="image avatar"
                     ><img
                         src="{{site.avatar}}"
                         alt="avatar"
+                        id="avatarImg"
                         onContextMenu="return false"
                 /></a>
                 {% endif %}
@@ -121,6 +205,53 @@
                 </ul>
             </div>
         </footer>
+
+        <!-- Avatar toggle -->
+        <script>
+            (function () {
+                var img = document.getElementById("avatarImg");
+                var btnOld = document.getElementById("btnOld");
+                var btnCurrent = document.getElementById("btnCurrent");
+                var pill = document.getElementById("avatarPill");
+
+                function setPill(activeBtn) {
+                    var track = document.getElementById("avatarToggle");
+                    var trackLeft = track.getBoundingClientRect().left;
+                    var btnLeft = activeBtn.getBoundingClientRect().left;
+                    pill.style.width = activeBtn.offsetWidth + "px";
+                    pill.style.transform =
+                        "translateX(" + (btnLeft - trackLeft - 3) + "px)";
+                }
+
+                // Init pill and object-position on load
+                window.addEventListener("load", function () {
+                    setPill(btnOld);
+                    img.style.objectPosition =
+                        btnOld.dataset.pos || "center center";
+                });
+
+                function switchAvatar(activeBtn, inactiveBtn) {
+                    if (activeBtn.classList.contains("active")) return;
+                    activeBtn.classList.add("active");
+                    inactiveBtn.classList.remove("active");
+                    setPill(activeBtn);
+                    img.classList.add("fade-out");
+                    setTimeout(function () {
+                        img.src = activeBtn.dataset.src;
+                        img.style.objectPosition =
+                            activeBtn.dataset.pos || "center center";
+                        img.classList.remove("fade-out");
+                    }, 200);
+                }
+
+                btnOld.addEventListener("click", function () {
+                    switchAvatar(btnOld, btnCurrent);
+                });
+                btnCurrent.addEventListener("click", function () {
+                    switchAvatar(btnCurrent, btnOld);
+                });
+            })();
+        </script>
 
         <!-- Scripts -->
         <script src="./assets/original/js/jquery.min.js"></script>
