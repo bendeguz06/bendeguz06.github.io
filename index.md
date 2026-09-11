@@ -2,9 +2,9 @@
 layout: homepage
 ---
 
-## Interests
+## About
 
-- **Physics, Mathematics, Scientific Computing:** data visualization, physics simulations
+I'm 19, born in Hungary, and I've just started my first semester of the Physics BSc at ETH Zurich. I'm interested in exploring high-energy physics. I'm always open to collaborating on projects.
 
 ## Projects
 - <a href="https://polya.live/">**Polya:**</a> *A community-based problem-solving platform for students of mathematics and physics*, <a href="https://github.com/Polya-gh/">GitHub</a>  (2026-)
@@ -16,3 +16,7 @@ layout: homepage
 - **Athletica Galactica Finalist:** Hungarian IOAA Qualifying Competition, <a href="assets/athletica_galactica_certificate.png" target="_blank">Certificate</a> (2024/25, Budapest, did not attend finals)
 - **PRAMUN XVII:** Represented Republic of Korea \| Disarmament 2  (2025, Prague)
 - **CanSat - ESERO Austria:** Can-sized satellite building competition, <a href="https://www.youtube.com/watch?v=yM3BTNvkPlo&t" target="_blank">Aftermovie</a> (2024/25, Linz)
+
+## Socials
+
+[Email](mailto:{{ site.email }}) · [LinkedIn]({{ site.linkedin }}) · [Instagram](https://www.instagram.com/bendeguzzz0/)

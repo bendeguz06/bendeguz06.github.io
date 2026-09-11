@@ -106,6 +106,8 @@
             }
 
             #header .image.avatar img {
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
                 transition: opacity 0.35s ease;
             }
 
@@ -157,8 +159,6 @@
                     {% if site.position %} {{ site.position }}<br />
                     {% endif %} {% if site.affiliation %} {{ site.affiliation }}
                     <br />
-                    {% endif %} {% if site.email %} {{ site.email }}
-                    <br />
                     {% endif %}
                 </header-info>
             </div>
@@ -193,6 +193,14 @@
                         <a
                             href="{{ site.github_link }}"
                             class="icon brands fa-github"
+                        ></a>
+                    </li>
+                    {% endif %} {% if site.youtube %}
+                    <li>
+                        <a
+                            href="{{ site.youtube }}"
+                            class="icon brands fa-youtube"
+                            aria-label="YouTube"
                         ></a>
                     </li>
                     {% endif %} {% if site.google_scholar %}
