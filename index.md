@@ -17,6 +17,6 @@ I'm 19, born in Hungary, and I've just started my first semester of the Physics 
 - **PRAMUN XVII:** Represented Republic of Korea \| Disarmament 2  (2025, Prague)
 - **CanSat - ESERO Austria:** Can-sized satellite building competition, <a href="https://www.youtube.com/watch?v=yM3BTNvkPlo&t" target="_blank">Aftermovie</a> (2024/25, Linz)
 
-## Socials
+## Contact
 
-[Email](mailto:{{ site.email }}) · [LinkedIn]({{ site.linkedin }}) · [Instagram](https://www.instagram.com/bendeguzzz0/)
+[Email](mailto:{{ site.email }}) · [Instagram](https://www.instagram.com/bendeguzzz0/)
