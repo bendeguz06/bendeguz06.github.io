@@ -4,7 +4,7 @@ layout: homepage
 
 ## About
 
-I'm 19, born in Hungary, and I've just started my first semester of the Physics BSc at ETH Zurich.
+I'm 20, born in Hungary, and I've just started my first semester of the Physics BSc at ETH Zurich.
 
 ## Projects
 - <a href="https://polya.live/">**Polya:**</a> *A community-based problem-solving platform for students of mathematics and physics*, <a href="https://github.com/Polya-gh/">GitHub</a>  (2026-)
